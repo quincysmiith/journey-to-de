@@ -735,6 +735,18 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="02b%20-%20DAG%20screenshots.html" class="md-nav__link">
+        Airflow Screenshots
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -750,6 +762,18 @@
         fivethirtyeight DAG
       </a>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04%20-%20Project%20Visualisations.html" class="md-nav__link">
+        Project Visualisations
+      </a>
     </li>
   
 
@@ -1283,16 +1307,18 @@ from datetime import timedelta, datetime
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.contrib.operators.bigquery_operator import BigQueryOperator
+from airflow.operators.python import PythonVirtualenvOperator, PythonOperator
 
 import os
 import pathlib
-
-
+import urllib.request
+import zipfile
+import shutil
 
 default_args = {
     'owner': 'airflow',
-    'depends_on_past': True,    
-    'start_date': datetime(2021, 07, 14),
+    'depends_on_past': False,    
+    'start_date': datetime(2021, 7, 14),
     'end_date': datetime(2021, 12, 5),
     'email': ['airflow@airflow.com'],
     'email_on_failure': True,
@@ -1301,29 +1327,53 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
 }
 
+#schedule_interval = &quot;00 05 * * *&quot;
 
-# Set Schedule: Run pipeline once a day. 
-# Use cron to define exact time. Eg. 8:15am would be &quot;15 08 * * *&quot;
-schedule_interval = &quot;00 05 * * *&quot;
+BQ_CONN_ID = &quot;my_gcp_conn&quot;
 
-
-# Define DAG: Set ID and assign default args and schedule interval
 dag = DAG(
-    'fivethirtyeight_to_BQ', 
-    default_args=default_args, 
-    schedule_interval=schedule_interval
-    )
+    'dag_for_testing', 
+    default_args=default_args)#, 
+    #schedule_interval=schedule_interval
+    #)
 
+# -------------------- Python Functions -------------------- #
 
-## Task 1: Download the fivethirtyeight data repository.
+def where_am_i():
+    &quot;&quot;&quot;Print the current working directory
+    &quot;&quot;&quot;
 
-t1 = BashOperator(
-    task_id='downlowd 538 repo',
-    bash_command='download_and_unpack_repo.sh ',
-    dag=dag,
-)
+    print(os.getcwd())
 
-## Task 2: upload the csvs from the repository into tables in BigQuery
+    return None
+
+def download_repo():
+    &quot;&quot;&quot;Download the fivethirtyeight data repo as a zip file.
+    Saves the zip file in a folder called data
+    &quot;&quot;&quot;
+
+    pathlib.Path(os.getcwd(), &quot;data&quot;).mkdir(parents=True, exist_ok=True)
+
+    url = &quot;https://github.com/fivethirtyeight/data/archive/refs/heads/master.zip&quot;
+
+    urllib.request.urlretrieve(url, pathlib.Path(os.getcwd(), &quot;data&quot;, &quot;master.zip&quot;))
+
+    print(url)
+
+    return None
+
+def unzip_repo():
+    &quot;&quot;&quot;Unzips a file called master.zip that is saved in 
+    a data folder.
+
+    &quot;&quot;&quot;
+
+    zip_path = pathlib.Path(os.getcwd(), &quot;data&quot;, &quot;master.zip&quot;)
+
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(pathlib.Path(os.getcwd(), &quot;data&quot;))
+
+    return None
 
 def upload_dataframe_into_bq(pathlib_path_to_csv):
     &quot;&quot;&quot;With a file path to a csv file loads the csv file
@@ -1376,6 +1426,8 @@ def load_csvs():
 
     from google.cloud import bigquery
     from icecream import ic
+    import os
+    import pathlib
     # This is to get the directory that the program 
     # is currently running in.
     #dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -1386,7 +1438,7 @@ def load_csvs():
 
     i = 0
 
-    for root, dirs, files in os.walk(dir_path):
+    for root, dirs, files in os.walk(pathlib.Path(os.getcwd(), &quot;data&quot;)):
         for file in files: 
             if i &gt; 10:
                 return None
@@ -1414,25 +1466,36 @@ def load_csvs():
 
     return None
 
-t2 = PythonVirtualenvOperator(
-    task_id='load csvs to BQ',
-    python_callable=load_csvs,
-    requirements=[&quot;bigquery==0.0.15&quot;, &quot;icecream==2.1.1&quot;],
+
+def clean_directory():
+    &quot;&quot;&quot;Deletes the data directory and its contents.
+    &quot;&quot;&quot;
+
+    directory_to_remove = pathlib.Path(os.getcwd(), &quot;data&quot;)
+    shutil.rmtree(directory_to_remove)
+
+    return None
+
+
+# -------------------- Construct DAGs -------------------- #
+
+t1 = PythonOperator(
+    task_id='print_location',
+    python_callable=where_am_i,
     dag=dag
 )
 
-
-
-# Task 3: clean up downloaded fivethirtyeight repository
-
-t3 = BashOperator(
-    task_id='clean up downloads',
-    bash_command='cleanup_directory.sh ',
-    dag=dag,
+t2 = PythonOperator(
+    task_id='get_the_data',
+    python_callable=download_repo,
+    dag=dag
 )
 
-
-# Task 4: Create production version of drinks data
+t3 = PythonOperator(
+    task_id='unzip_the_data',
+    python_callable=unzip_repo,
+    dag=dag
+)
 
 t4 = BigQueryOperator(
         task_id='bq_create_prod_version_of_drink',    
@@ -1460,12 +1523,27 @@ t4 = BigQueryOperator(
         dag=dag
     )
 
+t5 = PythonVirtualenvOperator(
+    task_id='load_csvs_to_BQ',
+    python_callable=load_csvs,
+    requirements=[&quot;bigquery==0.0.15&quot;, &quot;icecream==2.1.1&quot;],
+    dag=dag
+)
 
-# Set up dependencies
+t6 = PythonOperator(
+    task_id='delete_downloaded_data',
+    python_callable=clean_directory,
+    dag=dag
+)
+
+# -------------------- Set up dependencies -------------------- #
 
 t1 &gt;&gt; t2
 t2 &gt;&gt; t3
-t2 &gt;&gt; t4
+t3 &gt;&gt; t5
+t5 &gt;&gt; t4
+t5 &gt;&gt; t6
+
 
 
 </code></pre>
@@ -1488,7 +1566,7 @@ t2 &gt;&gt; t4
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="02%20-%20airflow%20setup.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Airflow server setup" rel="prev">
+        <a href="02b%20-%20DAG%20screenshots.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Airflow Screenshots" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1497,20 +1575,20 @@ t2 &gt;&gt; t4
               <span class="md-footer__direction">
                 Previous
               </span>
-              Airflow server setup
+              Airflow Screenshots
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../Python/Data%20Engineering%20with%20python/Chapter%201.html" class="md-footer__link md-footer__link--next" aria-label="Next: Chapter 1: What is data engineering" rel="next">
+        <a href="04%20-%20Project%20Visualisations.html" class="md-footer__link md-footer__link--next" aria-label="Next: Project Visualisations" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Chapter 1: What is data engineering
+              Project Visualisations
             </div>
           </div>
           <div class="md-footer__button md-icon">
