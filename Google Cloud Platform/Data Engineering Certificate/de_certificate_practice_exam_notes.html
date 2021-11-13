@@ -392,6 +392,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#questions-and-logic-answers" class="md-nav__link">
+    Questions and logic answers
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -407,6 +414,18 @@
     <li class="md-nav__item">
       <a href="google_ai_platform.html" class="md-nav__link">
         Google AI Platform
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="google_bigquery.html" class="md-nav__link">
+        BigQuery
       </a>
     </li>
   
@@ -1602,6 +1621,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#questions-and-logic-answers" class="md-nav__link">
+    Questions and logic answers
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1653,6 +1679,49 @@
 <li>Vision</li>
 </ul>
 <p>Data Studio: https://cloud.google.com/ai-platform/docs/technical-overview</p>
+<h3 id="questions-and-logic-answers">Questions and logic answers</h3>
+<p>Your company built a TensorFlow neural-network model with a large number of neurons and layers.
+The model fits well for training data. However, when tested against new data, it performs poorly.
+What method can you enploy to address this?</p>
+<ol>
+<li>Threading</li>
+<li>Serialization</li>
+<li>Dropout Methods</li>
+<li>Dimensionality Reduction</li>
+</ol>
+<p><strong>Explanation</strong></p>
+<p>fitting well on training data and poorly on new data is a sign of overfitting.
+Dropout method is a specific technique for reducing overfitting in neural networks (<a href="https://www.machinecurve.com/index.php/2019/12/16/what-is-dropout-reduce-overfitting-in-your-neural-networks/">link</a>)</p>
+<p>Number 3</p>
+<hr />
+<p>You are building a model to make clothing recommendations.
+You know a user's fashion preference is likely to change over time, so you build a data pipline 
+to stream new data back to the model as it becomes available. How should you use this data to train 
+the model?</p>
+<ol>
+<li>Continuously retrain the model on just the new data</li>
+<li>Continuously retrain the model on a combination of existing data and the new data.</li>
+<li>Train on the existing data while using the new data as your test set</li>
+<li>Train on the new data while using the existing data as your test set</li>
+</ol>
+<p><strong>Explanation</strong></p>
+<p>Assuming continued accuracy as a goal.
+For the model to continue to be accurate it should be trained on only new data. This excludes 3 and 2.
+A test set is always necessary so 4 is the answer</p>
+<hr />
+<p>You have a petabyte of analytics data and need to design a storage and processing platform for it.
+You must be able to perform data warehouse-style analytics on the data in Google Cloud and expose the
+dataset as files for batch analysis tools in other cloud providers. What shoud you do?</p>
+<ol>
+<li>Store and process the entire dataset in BigQuery</li>
+<li>Store and process the entire dataset in Cloud Bigtable.</li>
+<li>Store the full dataset in BigQuery and store a compressed copy of the data in a cloud storage bucket.</li>
+<li>Store the warm data as files in Cloud storage and store the active data in BigQuery. Keep this ratio as 80% warm and 20% active.</li>
+</ol>
+<p><strong>Explanation</strong></p>
+<p>The data needs to be exposed to tools in other platforms. BigQuery and BigTable do not allow this
+so 1 and 2 are excluded.
+Compressed data isn't always available for ingestion by other tools so 3 is excluded.</p>
                 
               
               
