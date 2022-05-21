@@ -14,7 +14,7 @@
     
     
       
-        <title>Working with and manipulating text files - Road to a data engineer</title>
+        <title>CSVKIT - Road to a data engineer</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#working-with-and-manipulating-text-files" class="md-skip">
+        <a href="#csvkit" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Working with and manipulating text files
+              CSVKIT
             
           </span>
         </div>
@@ -765,18 +765,6 @@
             
   
   
-  
-    <li class="md-nav__item">
-      <a href="../introduction.html" class="md-nav__link">
-        Introduction and Motivation
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
     
   
   
@@ -784,18 +772,30 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_2" type="checkbox" id="__nav_7_1_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_1" type="checkbox" id="__nav_7_1_1" checked>
       
-      <label class="md-nav__link" for="__nav_7_1_2">
+      <label class="md-nav__link" for="__nav_7_1_1">
         Crash Course
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Crash Course" data-md-level="3">
-        <label class="md-nav__title" for="__nav_7_1_2">
+        <label class="md-nav__title" for="__nav_7_1_1">
           <span class="md-nav__icon md-icon"></span>
           Crash Course
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_introduction.html" class="md-nav__link">
+        Introduction and Motivation
+      </a>
+    </li>
+  
+
           
             
   
@@ -824,65 +824,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Working with and manipulating text files
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="03_working_with_text_files.html" class="md-nav__link md-nav__link--active">
-        Working with and manipulating text files
+    <li class="md-nav__item">
+      <a href="03_downloading_files.html" class="md-nav__link">
+        Downloading files with Bash
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sed" class="md-nav__link">
-    sed
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#grep" class="md-nav__link">
-    grep
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#awk" class="md-nav__link">
-    awk
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -892,8 +838,8 @@
   
   
     <li class="md-nav__item">
-      <a href="04_common_text_file_cleaning.html" class="md-nav__link">
-        BONUS - Common text file cleaning operations
+      <a href="04_working_with_text_files.html" class="md-nav__link">
+        Working with and manipulating text files
       </a>
     </li>
   
@@ -928,8 +874,152 @@
   
   
     <li class="md-nav__item">
-      <a href="05_toolkit_setup.html" class="md-nav__link">
+      <a href="05_common_text_file_cleaning.html" class="md-nav__link">
+        BONUS - Common text file cleaning operations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_toolkit_setup.html" class="md-nav__link">
         Setup data tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          CSVKIT
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="07_csvkit_a_brief_detour.html" class="md-nav__link md-nav__link--active">
+        CSVKIT
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#converting-data-into-csv-format" class="md-nav__link">
+    Converting data into csv format
+  </a>
+  
+    <nav class="md-nav" aria-label="Converting data into csv format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-excel-into-csv" class="md-nav__link">
+    From excel into csv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-json-into-csv" class="md-nav__link">
+    From json into csv
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exploring-the-csv-data" class="md-nav__link">
+    Exploring the csv data
+  </a>
+  
+    <nav class="md-nav" aria-label="Exploring the csv data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-columns-are-in-the-data-csvcut" class="md-nav__link">
+    What columns are in the data - csvcut
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peeking-at-the-data-csvlook" class="md-nav__link">
+    Peeking at the data - csvlook
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peeking-at-a-subset-of-data-csvcut-c" class="md-nav__link">
+    Peeking at a subset of data - csvcut -c
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-statistics-of-the-csv-data-csvstat" class="md-nav__link">
+    Summary statistics of the csv data - csvstat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-statistics-of-a-subset-of-data" class="md-nav__link">
+    Summary statistics of a subset of data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_getting_data_into_sqlite.html" class="md-nav__link">
+        08 getting data into sqlite
       </a>
     </li>
   
@@ -949,14 +1039,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_3" type="checkbox" id="__nav_7_1_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_2" type="checkbox" id="__nav_7_1_2" >
       
-      <label class="md-nav__link" for="__nav_7_1_3">
+      <label class="md-nav__link" for="__nav_7_1_2">
         Deepnote Notebooks
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Deepnote Notebooks" data-md-level="3">
-        <label class="md-nav__title" for="__nav_7_1_3">
+        <label class="md-nav__title" for="__nav_7_1_2">
           <span class="md-nav__icon md-icon"></span>
           Deepnote Notebooks
         </label>
@@ -1774,23 +1864,77 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sed" class="md-nav__link">
-    sed
+  <a href="#converting-data-into-csv-format" class="md-nav__link">
+    Converting data into csv format
   </a>
+  
+    <nav class="md-nav" aria-label="Converting data into csv format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-excel-into-csv" class="md-nav__link">
+    From excel into csv
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-json-into-csv" class="md-nav__link">
+    From json into csv
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#grep" class="md-nav__link">
-    grep
+  <a href="#exploring-the-csv-data" class="md-nav__link">
+    Exploring the csv data
+  </a>
+  
+    <nav class="md-nav" aria-label="Exploring the csv data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-columns-are-in-the-data-csvcut" class="md-nav__link">
+    What columns are in the data - csvcut
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#awk" class="md-nav__link">
-    awk
+        
+          <li class="md-nav__item">
+  <a href="#peeking-at-the-data-csvlook" class="md-nav__link">
+    Peeking at the data - csvlook
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peeking-at-a-subset-of-data-csvcut-c" class="md-nav__link">
+    Peeking at a subset of data - csvcut -c
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-statistics-of-the-csv-data-csvstat" class="md-nav__link">
+    Summary statistics of the csv data - csvstat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-statistics-of-a-subset-of-data" class="md-nav__link">
+    Summary statistics of a subset of data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1807,136 +1951,60 @@
               
                 
                 
-                <h1 id="working-with-and-manipulating-text-files">Working with and manipulating text files</h1>
-<p>Throughout this section we will be working with the Alice in Wonderland
-book as a text file.</p>
-<p><strong>Download Alice in Wonderland</strong></p>
-<pre><code class="language-bash">
-# download Alice in Wonderland using wget
-wget --output-document=alice.txt https://www.gutenberg.org/files/11/11-0.txt
-
-# download Alice inWonderland using curl
-curl -o &quot;alice.txt&quot; 'https://www.gutenberg.org/files/11/11-0.txt'
-
-</code></pre>
-<h2 id="sed"><code>sed</code></h2>
-<p><code>sed</code> stands for Stream Editor. It allows you to manipulate text files.</p>
-<p>Basic usage of <code>sed</code> to replace the first "t" in each line with a capital "T"</p>
-<pre><code class="language-bash"># By default sed will output to standard output (print to screen)
-# and leave the original file unchanged
-
-sed 's/t/T/' alice.txt
-
-#It is also possible to pipe data into sed
-cat alice.txt | sed 's/t/T/' 
+                <h1 id="csvkit">CSVKIT</h1>
+<blockquote>
+<p>csvkit is a suite of command-line tools for converting to and working with CSV, the king of tabular file formats.</p>
+</blockquote>
+<p>If the data analysis task is not that extensive and the data is relatively small, csvkit can be used to do 
+some exploration and basic analysis of the data you have.</p>
+<p>This may be all that is needed before loading the data into the powerhouse that is SQLite.</p>
+<h2 id="converting-data-into-csv-format">Converting data into csv format</h2>
+<h3 id="from-excel-into-csv">From excel into csv</h3>
+<pre><code class="language-bash"># convert data from a sheet in data.xls file into data.csv
+in2csv data.xls &gt; data.csv
 
 </code></pre>
-<p>To change every instance of a lowercase "t" with an uppercase "T"</p>
+<h3 id="from-json-into-csv">From json into csv</h3>
 <pre><code class="language-bash">
-sed 's/t/T/g' alice.txt
+# convert json data from data.json into a csv file called data.csv
+in2csv data.json &gt; data.csv
 
 </code></pre>
-<p>To modify the file in place, use the <code>-i</code> modifier</p>
+<h2 id="exploring-the-csv-data">Exploring the csv data</h2>
+<h3 id="what-columns-are-in-the-data-csvcut">What columns are in the data - <code>csvcut</code></h3>
 <pre><code class="language-bash">
-sed -i 's/t/T/g' alice.txt
+# show what columns are in the iris.csv file
+csvcut -n iris.csv
 
 </code></pre>
-<h2 id="grep"><code>grep</code></h2>
-<p><code>grep</code> stands for Global Regular Expression Print. <code>grep</code> allows us to search for
-text within files.</p>
-<p>Simple usage of <code>grep</code> to find all the lines in a text file that contain a string</p>
+<h3 id="peeking-at-the-data-csvlook">Peeking at the data - <code>csvlook</code></h3>
+<p>Commands from csvkit can be piped into other csvkit commands and also bash commands.</p>
 <pre><code class="language-bash">
-# what lines in alice in wonderland contain the string 'watch'
-# by default grep will print to standard output
-grep watch alice.txt
-
-# text files can also be piped into grep
-cat alice.txt | grep watch
-
-# the output of grep can also be written to a file in the usual way
-cat alice.txt | grep watch &gt; 'lines_of_alice_that_contain_watch.txt'
+# look at the first 10 rows of the iris.csv file in a pretty format
+csvlook iris.csv | head -n 10
 
 </code></pre>
-<p>Using grep to search for lines that contain a specific word</p>
+<h3 id="peeking-at-a-subset-of-data-csvcut-c">Peeking at a subset of data - <code>csvcut -c</code></h3>
 <pre><code class="language-bash">
-# what lines in alice in wonderland contain the word 'watch'
-grep -w watch alice.txt
-</code></pre>
-<p>Search for 'chapter' in a few different ways.</p>
-<pre><code class="language-bash">
-# Search for lines that contain the word 'chapter'
-grep chapter alice.txt
+# isolating certain columns can be achieved using `awk`
+cat iris.csv | awk -F ',' '{ print $2,$5 }' | csvlook | head -n 10
 
-# Search for lines that contain the word 'chapter' ignoring the case
-grep -i chapter alice.txt
-
-# Search for lines that begin with the word 'chapter' ignoring the case
-grep -i ^chapter alice.txt
+# csvkit has a command called `csvcut` which can be used to isolate columns also
+cat iris.csv | csvcut -c 2,5 | csvlook | head -n 10
 
 </code></pre>
-<p>Using the <code>-n</code> modifier will print the line number of where the match is found</p>
+<h3 id="summary-statistics-of-the-csv-data-csvstat">Summary statistics of the csv data - <code>csvstat</code></h3>
 <pre><code class="language-bash">
-# print the line numbers 
-grep -i -n ^chapter alice.txt
+# show a summary of each column in the iris.csv file.
+csvstat iris.csv
 
 </code></pre>
-<p>Lines before and after a match can be printed in addition to the line that is matched</p>
+<h3 id="summary-statistics-of-a-subset-of-data">Summary statistics of a subset of data</h3>
 <pre><code class="language-bash">
-# print 4 lines after each line that contains the string watch
-grep -A 4 watch alice.txt
+cat iris.csv | awk -F &quot;,&quot; 'NR==1; /Iris-versicolor/ { print }' | csvstat
 
-# print the preceeding 3 lines before each line that contains 'White Rabbit'
-grep -B 3 'White Rabbit' alice.txt
 
-</code></pre>
-<p>It is also possible to search for text in a file within a directory.</p>
-<pre><code class="language-bash">
-# prints lines which begin with &quot;Chapter&quot; in any file located in current directory
-grep -Ri ^chapter .
-
-# prints lines which begin with Chapter in any file located in 'linux_data_analysis' folder
-grep -Ri ^chapter ~/Documents/Projects/linux_data_analysis
-
-</code></pre>
-<h2 id="awk"><code>awk</code></h2>
-<p><code>awk</code> is a convenient and expressive programming language that can be used for
-pattern scanning and data manipulation tasks.</p>
-<p>Basic usage</p>
-<pre><code class="language-bash">
-# Awk can be used to print the contents of a file
-awk '{ print }' iris.csv
-
-# data can be piped into awk for it to work on
-cat iris.csv | awk '{ print }'
-
-</code></pre>
-<p>By default awk assumes the space character is used to separate fields.</p>
-<p>Using the <code>-F</code> modifier we can tell awk to use a different character to process the data.</p>
-<pre><code class="language-bash">
-# get the first column of a comma separated file
-cat iris.csv | awk -F ',' '{ print $1 }'
-
-# get the third column of a comma separated file
-cat iris.csv | awk -F ',' '{ print $3 }'
-
-# get the 2nd and 4th column of a comma separated file
-cat iris.csv | awk -F ',' '{ print $2,$4 }'
-
-# the last column can be referenced with &quot;$NF&quot;
-# get the last column of a comma separated file
-cat iris.csv | awk -F ',' '{ print $NF }'
-
-</code></pre>
-<p>Awk can be used to filter lines based on the line containing a string.</p>
-<pre><code class="language-bash">
-# print lines containing &quot;Iris-versicolor&quot;
-cat iris.csv | awk '/Iris-versicolor/ { print }'
-
-</code></pre>
-<p>Awk can be used to filter lines based on the numerical value of a field</p>
-<pre><code class="language-bash">
-# print lines where the second column is greater or equal to 3
-cat iris.csv | awk -F ',' '$2 &gt;= 3 { print } '
+cat iris.csv | csvgrep -c 5 -m Iris-versicolor| csvstat
 
 </code></pre>
                 
@@ -1958,7 +2026,7 @@ cat iris.csv | awk -F ',' '$2 &gt;= 3 { print } '
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="02_expanding_the_fundamentals.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Expanding the fundamentals for Data Analysis" rel="prev">
+        <a href="06_toolkit_setup.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup data tools" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1967,20 +2035,20 @@ cat iris.csv | awk -F ',' '$2 &gt;= 3 { print } '
               <span class="md-footer__direction">
                 Previous
               </span>
-              Expanding the fundamentals for Data Analysis
+              Setup data tools
             </div>
           </div>
         </a>
       
       
         
-        <a href="04_common_text_file_cleaning.html" class="md-footer__link md-footer__link--next" aria-label="Next: BONUS - Common text file cleaning operations" rel="next">
+        <a href="08_getting_data_into_sqlite.html" class="md-footer__link md-footer__link--next" aria-label="Next: 08 getting data into sqlite" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              BONUS - Common text file cleaning operations
+              08 getting data into sqlite
             </div>
           </div>
           <div class="md-footer__button md-icon">

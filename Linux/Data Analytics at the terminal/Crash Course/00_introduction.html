@@ -14,7 +14,7 @@
     
     
       
-        <title>BONUS - Common text file cleaning operations - Road to a data engineer</title>
+        <title>Introduction and Motivation - Road to a data engineer</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bonus-common-text-file-cleaning-operations" class="md-skip">
+        <a href="#introduction-and-motivation" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              BONUS - Common text file cleaning operations
+              Introduction and Motivation
             
           </span>
         </div>
@@ -765,18 +765,6 @@
             
   
   
-  
-    <li class="md-nav__item">
-      <a href="../introduction.html" class="md-nav__link">
-        Introduction and Motivation
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
     
   
   
@@ -784,18 +772,117 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_2" type="checkbox" id="__nav_7_1_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_1" type="checkbox" id="__nav_7_1_1" checked>
       
-      <label class="md-nav__link" for="__nav_7_1_2">
+      <label class="md-nav__link" for="__nav_7_1_1">
         Crash Course
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Crash Course" data-md-level="3">
-        <label class="md-nav__title" for="__nav_7_1_2">
+        <label class="md-nav__title" for="__nav_7_1_1">
           <span class="md-nav__icon md-icon"></span>
           Crash Course
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction and Motivation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="00_introduction.html" class="md-nav__link md-nav__link--active">
+        Introduction and Motivation
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#who-is-this-for" class="md-nav__link">
+    Who is this for?
+  </a>
+  
+    <nav class="md-nav" aria-label="Who is this for?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-bash-and-sqlite" class="md-nav__link">
+    Why bash and SQLite
+  </a>
+  
+    <nav class="md-nav" aria-label="Why bash and SQLite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash" class="md-nav__link">
+    Bash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlite" class="md-nav__link">
+    SQLite
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-guide-is-not" class="md-nav__link">
+    What this guide is not
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personal" class="md-nav__link">
+    Personal
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
           
             
   
@@ -826,8 +913,8 @@
   
   
     <li class="md-nav__item">
-      <a href="03_working_with_text_files.html" class="md-nav__link">
-        Working with and manipulating text files
+      <a href="03_downloading_files.html" class="md-nav__link">
+        Downloading files with Bash
       </a>
     </li>
   
@@ -836,79 +923,11 @@
             
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          BONUS - Common text file cleaning operations
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="04_common_text_file_cleaning.html" class="md-nav__link md-nav__link--active">
-        BONUS - Common text file cleaning operations
+    <li class="md-nav__item">
+      <a href="04_working_with_text_files.html" class="md-nav__link">
+        Working with and manipulating text files
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#remove-the-first-n-rows-in-a-text-file" class="md-nav__link">
-    Remove the first n rows in a text file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#remove-the-last-n-rows-in-a-text-file" class="md-nav__link">
-    Remove the last n rows in a text file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#only-keep-rows-with-n-number-of-columns" class="md-nav__link">
-    Only keep rows with n number of columns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#change-the-field-separator-in-the-file" class="md-nav__link">
-    Change the field separator in the file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#only-keep-a-subset-of-the-columns" class="md-nav__link">
-    Only keep a subset of the columns
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -942,8 +961,44 @@
   
   
     <li class="md-nav__item">
-      <a href="05_toolkit_setup.html" class="md-nav__link">
+      <a href="05_common_text_file_cleaning.html" class="md-nav__link">
+        BONUS - Common text file cleaning operations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_toolkit_setup.html" class="md-nav__link">
         Setup data tools
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_csvkit_a_brief_detour.html" class="md-nav__link">
+        CSVKIT
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_getting_data_into_sqlite.html" class="md-nav__link">
+        08 getting data into sqlite
       </a>
     </li>
   
@@ -963,14 +1018,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_3" type="checkbox" id="__nav_7_1_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_2" type="checkbox" id="__nav_7_1_2" >
       
-      <label class="md-nav__link" for="__nav_7_1_3">
+      <label class="md-nav__link" for="__nav_7_1_2">
         Deepnote Notebooks
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Deepnote Notebooks" data-md-level="3">
-        <label class="md-nav__title" for="__nav_7_1_3">
+        <label class="md-nav__title" for="__nav_7_1_2">
           <span class="md-nav__icon md-icon"></span>
           Deepnote Notebooks
         </label>
@@ -1788,36 +1843,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#remove-the-first-n-rows-in-a-text-file" class="md-nav__link">
-    Remove the first n rows in a text file
+  <a href="#who-is-this-for" class="md-nav__link">
+    Who is this for?
+  </a>
+  
+    <nav class="md-nav" aria-label="Who is this for?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-bash-and-sqlite" class="md-nav__link">
+    Why bash and SQLite
+  </a>
+  
+    <nav class="md-nav" aria-label="Why bash and SQLite">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash" class="md-nav__link">
+    Bash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlite" class="md-nav__link">
+    SQLite
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-guide-is-not" class="md-nav__link">
+    What this guide is not
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#remove-the-last-n-rows-in-a-text-file" class="md-nav__link">
-    Remove the last n rows in a text file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#only-keep-rows-with-n-number-of-columns" class="md-nav__link">
-    Only keep rows with n number of columns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#change-the-field-separator-in-the-file" class="md-nav__link">
-    Change the field separator in the file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#only-keep-a-subset-of-the-columns" class="md-nav__link">
-    Only keep a subset of the columns
+  <a href="#personal" class="md-nav__link">
+    Personal
   </a>
   
 </li>
@@ -1835,47 +1909,56 @@
               
                 
                 
-                <h1 id="bonus-common-text-file-cleaning-operations">BONUS - Common text file cleaning operations</h1>
-<h4 id="remove-the-first-n-rows-in-a-text-file">Remove the first n rows in a text file</h4>
-<p>Remove first n rows using tail</p>
-<pre><code class="language-bash"># print the file with first 5 rows removed
-cat iris.csv | tail -n +5
-
-# remove first 5 rows and save to a file
-cat iris.csv | tail -n +5 &gt; iris_without_first_five_rows.csv
-
-</code></pre>
-<hr />
-<h4 id="remove-the-last-n-rows-in-a-text-file">Remove the last n rows in a text file</h4>
-<pre><code class="language-bash"># Remove the last 5 rows of a text file
-cat iris.csv | tail -r | tail -n +5 | tail -r
-
-</code></pre>
-<hr />
-<h4 id="only-keep-rows-with-n-number-of-columns">Only keep rows with n number of columns</h4>
-<pre><code class="language-bash">
-# print all rows which have 5 columns
-cat iris.csv | awk -F ',' 'NF == 5 { print } '
-
-</code></pre>
-<hr />
-<h4 id="change-the-field-separator-in-the-file">Change the field separator in the file</h4>
-<pre><code class="language-bash">
-# Using `sed` to replace pipes in a file with commas
-sed 's/|/,/g' some_pipe_separeated_data.tsv
-
-</code></pre>
-<hr />
-<h4 id="only-keep-a-subset-of-the-columns">Only keep a subset of the columns</h4>
-<p>Keep the 1st, 3rd and 5th columns of a comma separated file</p>
-<pre><code class="language-bash">
-# print 1st, 3rd, and 5th columns to screen
-cat iris.csv | awk -F ',' '{ print $1,$3,$5 }'
-
-# write to file
-cat iris.csv | awk -F ',' '{ print $2,$4 }' &gt; new_iris_file.csv
-
-</code></pre>
+                <h1 id="introduction-and-motivation">Introduction and Motivation</h1>
+<p>Data analysis is a very broad and varied field. </p>
+<blockquote>
+<p>What is the 20% of applied knowledge that can drive 80% of results in data analysis</p>
+</blockquote>
+<p>A significant portion of an data analysis is cleaning and preparing data. This
+guide aims to provide effective tools at cleaning, preparing data. With the added bonus
+that the tools can also be leveraged further to perform some data analysis.</p>
+<p>With the vast amount of data encountered being in a tabular form, tabular data (rows and columns)
+is the focus of this guide.</p>
+<h2 id="who-is-this-for">Who is this for?</h2>
+<p>The aim of this guide is to take someone with nearly no experience 
+working at the terminal, to being able to perform a rigorous and repeatable data analysis.
+(Which includes all the steps taken to clean the data)</p>
+<p>This guide will leverage the Bash shell and sqlite.</p>
+<h3 id="why-bash-and-sqlite">Why bash and SQLite</h3>
+<ul>
+<li>Capability to handle a significant number of rows</li>
+<li>Scriptable - for repeatable data processing and analysis</li>
+<li>Flexibility to handle and clean data in a wide variety of formats</li>
+</ul>
+<h4 id="bash">Bash</h4>
+<p>The Bash shell has been around for 30 years and is the default shell
+on almost every Linux distribution. This means it can be found on most
+computers you will come across (including Mac and <a href="https://docs.microsoft.com/en-us/windows/wsl/about">Windows</a>).</p>
+<h4 id="sqlite">SQLite</h4>
+<p>SQLite is effectively a database in file format. It brings the power of a relational
+database to your fingertips without the server or authentication headaches.</p>
+<p>This is a great article on some of the capabilities in SQLite: https://antonz.org/sqlite-is-not-a-toy-database</p>
+<p>The SQL language which has been around since 1974 and is arguably the
+most common programming language for working with data. This means that
+there are likely best practice documented ways of achieving whatever the data 
+oriented task is.</p>
+<h2 id="what-this-guide-is-not">What this guide is not</h2>
+<p>This guide assumes that a data file has been made available to the analyst. Eg a csv
+file sent via email, or downloadable from somewhere online. As such this guide does not cover aspects of data collection such as web scraping.</p>
+<p>This guide does not cover data visualisation. What is covered is the process from 
+raw data to summarised / pivoted data which is in a visualisation ready format.</p>
+<p>The hope is that the data - once it is ready to be visualised - can be taken to any
+tool, platform, program for this purpose.</p>
+<h2 id="personal">Personal</h2>
+<p>In my very first data job, there was a weekly report I was responsible for
+producing every Monday. This report was a repetitive process that involved me
+recreating the same updated charts each week.</p>
+<p>All the work done in this report was done entirely in Excel and took me 3 hours to
+complete on a good day.</p>
+<p>In a way I am writing the guide I wish I had as a newbie data analyst.
+The tools in this guide would have effectively cut the weekly report down 
+from ~3 hours to under 1 hour. Not to mention eliminating all errors 
+associated with doing the analysis manually.</p>
                 
               
               
@@ -1895,7 +1978,7 @@ cat iris.csv | awk -F ',' '{ print $2,$4 }' &gt; new_iris_file.csv
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="03_working_with_text_files.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Working with and manipulating text files" rel="prev">
+        <a href="../../../Jobs%20and%20Roles/junior_data_engineer_at_woolies01.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Junior data engineer at woolies01" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1904,20 +1987,20 @@ cat iris.csv | awk -F ',' '{ print $2,$4 }' &gt; new_iris_file.csv
               <span class="md-footer__direction">
                 Previous
               </span>
-              Working with and manipulating text files
+              Junior data engineer at woolies01
             </div>
           </div>
         </a>
       
       
         
-        <a href="051_Visual_code_server_Google_Colab.html" class="md-footer__link md-footer__link--next" aria-label="Next: Run a Visual Studio Code editor server using Google Colab" rel="next">
+        <a href="01_fundamental_bash_commands.html" class="md-footer__link md-footer__link--next" aria-label="Next: Fundamental Bash Commands" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Run a Visual Studio Code editor server using Google Colab
+              Fundamental Bash Commands
             </div>
           </div>
           <div class="md-footer__button md-icon">

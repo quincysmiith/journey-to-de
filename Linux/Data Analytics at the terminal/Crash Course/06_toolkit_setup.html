@@ -765,18 +765,6 @@
             
   
   
-  
-    <li class="md-nav__item">
-      <a href="../introduction.html" class="md-nav__link">
-        Introduction and Motivation
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
     
   
   
@@ -784,18 +772,30 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_2" type="checkbox" id="__nav_7_1_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_1" type="checkbox" id="__nav_7_1_1" checked>
       
-      <label class="md-nav__link" for="__nav_7_1_2">
+      <label class="md-nav__link" for="__nav_7_1_1">
         Crash Course
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Crash Course" data-md-level="3">
-        <label class="md-nav__title" for="__nav_7_1_2">
+        <label class="md-nav__title" for="__nav_7_1_1">
           <span class="md-nav__icon md-icon"></span>
           Crash Course
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_introduction.html" class="md-nav__link">
+        Introduction and Motivation
+      </a>
+    </li>
+  
+
           
             
   
@@ -826,8 +826,8 @@
   
   
     <li class="md-nav__item">
-      <a href="03_working_with_text_files.html" class="md-nav__link">
-        Working with and manipulating text files
+      <a href="03_downloading_files.html" class="md-nav__link">
+        Downloading files with Bash
       </a>
     </li>
   
@@ -838,8 +838,8 @@
   
   
     <li class="md-nav__item">
-      <a href="04_common_text_file_cleaning.html" class="md-nav__link">
-        BONUS - Common text file cleaning operations
+      <a href="04_working_with_text_files.html" class="md-nav__link">
+        Working with and manipulating text files
       </a>
     </li>
   
@@ -872,6 +872,18 @@
             
   
   
+  
+    <li class="md-nav__item">
+      <a href="05_common_text_file_cleaning.html" class="md-nav__link">
+        BONUS - Common text file cleaning operations
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -888,7 +900,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="05_toolkit_setup.html" class="md-nav__link md-nav__link--active">
+      <a href="06_toolkit_setup.html" class="md-nav__link md-nav__link--active">
         Setup data tools
       </a>
       
@@ -914,8 +926,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sqlitebiter" class="md-nav__link">
-    sqlitebiter
+  <a href="#sqlite-utils" class="md-nav__link">
+    sqlite-utils
   </a>
   
 </li>
@@ -927,10 +939,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#beekeeper-studio" class="md-nav__link">
+    Beekeeper Studio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rich-cli" class="md-nav__link">
+    rich-cli
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_csvkit_a_brief_detour.html" class="md-nav__link">
+        CSVKIT
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_getting_data_into_sqlite.html" class="md-nav__link">
+        08 getting data into sqlite
+      </a>
     </li>
   
 
@@ -949,14 +999,14 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_3" type="checkbox" id="__nav_7_1_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_1_2" type="checkbox" id="__nav_7_1_2" >
       
-      <label class="md-nav__link" for="__nav_7_1_3">
+      <label class="md-nav__link" for="__nav_7_1_2">
         Deepnote Notebooks
         <span class="md-nav__icon md-icon"></span>
       </label>
       <nav class="md-nav" aria-label="Deepnote Notebooks" data-md-level="3">
-        <label class="md-nav__title" for="__nav_7_1_3">
+        <label class="md-nav__title" for="__nav_7_1_2">
           <span class="md-nav__icon md-icon"></span>
           Deepnote Notebooks
         </label>
@@ -1781,8 +1831,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sqlitebiter" class="md-nav__link">
-    sqlitebiter
+  <a href="#sqlite-utils" class="md-nav__link">
+    sqlite-utils
   </a>
   
 </li>
@@ -1790,6 +1840,20 @@
         <li class="md-nav__item">
   <a href="#chtsh" class="md-nav__link">
     cht.sh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beekeeper-studio" class="md-nav__link">
+    Beekeeper Studio
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rich-cli" class="md-nav__link">
+    rich-cli
   </a>
   
 </li>
@@ -1809,18 +1873,16 @@
                 
                 <h1 id="setup-data-tools">Setup data tools</h1>
 <p>While the bash shell comes prepackaged with many useful tools
-for manipulating data text files, it can be complicated to perform certain data tasks.
+for manipulating data text files. It can be complicated to perform certain data tasks,
+and difficult to remember all the commands necessary.
 There are some other tools that 
 will greatly improve the ease and efficiency of working with data
 at the terminal.</p>
-<p>The tools listed here will enable us to leverage the 
-SQL language which has been around since 1974 and is arguably the
-most common programming language for working with data.</p>
+<p>The tools listed here will enable us to leverage SQL for data analysis.</p>
 <p>These tools include:</p>
 <p>Essential</p>
 <ul>
 <li><strong>csvkit</strong> - suite of tools for effective data manipulation at the terminal</li>
-<li><strong>sqlitebiter</strong> - converts a wide range of file types into a SQLite database</li>
 <li><strong>sqlite-utils</strong> - tools for interacting with SQLite database</li>
 </ul>
 <p>Highly recommended</p>
@@ -1837,8 +1899,8 @@ most common programming language for working with data.</p>
 sudo pip install csvkit
 
 
-### install sqlitebiter
-pip install sqlitebiter
+### install sqlite-utils
+sudo pip install sqlite-utils
 
 
 ### install cht.sh
@@ -1872,23 +1934,48 @@ pip install rich-cli
 <p>csvkit installation instructions: https://csvkit.readthedocs.io/en/latest/tutorial/1_getting_started.html#installing-csvkit</p>
 <pre><code class="language-bash">sudo pip install csvkit
 </code></pre>
-<h3 id="sqlitebiter"><code>sqlitebiter</code></h3>
+<h3 id="sqlite-utils"><code>sqlite-utils</code></h3>
 <blockquote>
-<p>sqlitebiter is a CLI tool to convert CSV / Excel / HTML / JSON / Jupyter Notebook / LDJSON / LTSV / Markdown / SQLite / SSV / TSV / Google-Sheets to a SQLite database file.</p>
+<p>sqlite-utils is a library and command-line utility that helps create SQLite databases from an existing collection of data</p>
 </blockquote>
-<p>sqlitebiter installation instructions: https://sqlitebiter.readthedocs.io/en/latest/pages/introduction/index.html#installation</p>
-<pre><code class="language-bash">sudo pip install sqlitebiter
+<p>sqlite-utils installation <a href="https://sqlite-utils.datasette.io/en/stable/installation.html#using-pip">instructions</a></p>
+<pre><code class="language-bash">
+sudo pip install sqlite-utils
 </code></pre>
 <h3 id="chtsh"><code>cht.sh</code></h3>
 <blockquote>
 <p>Unified access to the best community driven cheat sheets repositories of the world.</p>
 </blockquote>
-<p>cht.sh installation instructions: https://github.com/chubin/cheat.sh#installation</p>
+<p>cht.sh installation <a href="https://github.com/chubin/cheat.sh#installation">instructions</a></p>
 <pre><code class="language-bash"># install cht.sh
 PATH_DIR=&quot;$HOME/bin&quot;  # or another directory on your $PATH
 mkdir -p &quot;$PATH_DIR&quot;
 curl https://cht.sh/:cht.sh &gt; &quot;$PATH_DIR/cht.sh&quot;
 chmod +x &quot;$PATH_DIR/cht.sh&quot;
+</code></pre>
+<h3 id="beekeeper-studio">Beekeeper Studio</h3>
+<blockquote>
+<p>A modern, easy to use, and good looking SQL client for MySQL, Postgres, SQLite, SQL Server, and more.</p>
+</blockquote>
+<p>Beekeeper Studio installation <a href="https://docs.beekeeperstudio.io/installation/">instructions</a></p>
+<pre><code class="language-bash"># Install beekeeper GPG key
+wget --quiet -O - https://deb.beekeeperstudio.io/beekeeper.key | sudo apt-key add -
+
+# add our repo to your apt lists directory
+echo &quot;deb https://deb.beekeeperstudio.io stable main&quot; | sudo tee /etc/apt/sources.list.d/beekeeper-studio-app.list
+
+# Update apt and install
+sudo apt update
+sudo apt install beekeeper-studio
+</code></pre>
+<h3 id="rich-cli"><code>rich-cli</code></h3>
+<blockquote>
+<p>Rich-cli is a command line toolbox for fancy output in the terminal, built with Rich.</p>
+</blockquote>
+<p>rich-cli installation <a href="https://github.com/Textualize/rich-cli">instructions</a></p>
+<pre><code class="language-bash">
+pip install rich-cli
+
 </code></pre>
                 
               
@@ -1909,7 +1996,7 @@ chmod +x &quot;$PATH_DIR/cht.sh&quot;
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="052_Data_Analysis_in_the_terminal_Google_Colab.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup for analysis at the terminal within a Google Colab notebook" rel="prev">
+        <a href="05_common_text_file_cleaning.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: BONUS - Common text file cleaning operations" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -1918,20 +2005,20 @@ chmod +x &quot;$PATH_DIR/cht.sh&quot;
               <span class="md-footer__direction">
                 Previous
               </span>
-              Setup for analysis at the terminal within a Google Colab notebook
+              BONUS - Common text file cleaning operations
             </div>
           </div>
         </a>
       
       
         
-        <a href="../Deepnote%20Notebooks/00_intro_to_data_analytics_at_terminal.html" class="md-footer__link md-footer__link--next" aria-label="Next: Environment setup" rel="next">
+        <a href="07_csvkit_a_brief_detour.html" class="md-footer__link md-footer__link--next" aria-label="Next: CSVKIT" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Environment setup
+              CSVKIT
             </div>
           </div>
           <div class="md-footer__button md-icon">
