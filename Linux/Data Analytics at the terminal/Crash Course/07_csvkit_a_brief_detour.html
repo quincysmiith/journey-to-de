@@ -14,7 +14,7 @@
     
     
       
-        <title>CSVKIT - Road to a data engineer</title>
+        <title>csvkit - a brief introduction - Road to a data engineer</title>
       
     
     
@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#csvkit" class="md-skip">
+        <a href="#csvkit-a-brief-introduction" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CSVKIT
+              csvkit - a brief introduction
             
           </span>
         </div>
@@ -850,30 +850,6 @@
   
   
     <li class="md-nav__item">
-      <a href="051_Visual_code_server_Google_Colab.html" class="md-nav__link">
-        Run a Visual Studio Code editor server using Google Colab
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="052_Data_Analysis_in_the_terminal_Google_Colab.html" class="md-nav__link">
-        Setup for analysis at the terminal within a Google Colab notebook
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="05_common_text_file_cleaning.html" class="md-nav__link">
         BONUS - Common text file cleaning operations
       </a>
@@ -908,12 +884,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          CSVKIT
+          csvkit - a brief introduction
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="07_csvkit_a_brief_detour.html" class="md-nav__link md-nav__link--active">
-        CSVKIT
+        csvkit - a brief introduction
       </a>
       
         
@@ -980,8 +956,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#peeking-at-a-subset-of-data-csvcut-c" class="md-nav__link">
-    Peeking at a subset of data - csvcut -c
+  <a href="#peeking-at-a-select-columns-of-data-csvcut-c" class="md-nav__link">
+    Peeking at a select columns of data - csvcut -c
   </a>
   
 </li>
@@ -994,8 +970,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#summary-statistics-of-a-subset-of-data" class="md-nav__link">
-    Summary statistics of a subset of data
+  <a href="#summary-statistics-of-a-subset-of-data-csvgrep" class="md-nav__link">
+    Summary statistics of a subset of data - csvgrep
   </a>
   
 </li>
@@ -1020,6 +996,66 @@
     <li class="md-nav__item">
       <a href="08_getting_data_into_sqlite.html" class="md-nav__link">
         08 getting data into sqlite
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09_interacting_with_sqlite.html" class="md-nav__link">
+        Interacting with SQLite databases
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_common_cleaning_tasks_in_sql.html" class="md-nav__link">
+        Common data cleaning and transforming tasks in SQL
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12_replicating_common_spreadsheet_tasks_in_sql.html" class="md-nav__link">
+        Replicating common spreadsheet tasks in SQL
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13_building_a_bash_script.html" class="md-nav__link">
+        Building a pipeline as a bash script
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="50_addditional_resources.html" class="md-nav__link">
+        Additional resources
       </a>
     </li>
   
@@ -1913,8 +1949,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#peeking-at-a-subset-of-data-csvcut-c" class="md-nav__link">
-    Peeking at a subset of data - csvcut -c
+  <a href="#peeking-at-a-select-columns-of-data-csvcut-c" class="md-nav__link">
+    Peeking at a select columns of data - csvcut -c
   </a>
   
 </li>
@@ -1927,8 +1963,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#summary-statistics-of-a-subset-of-data" class="md-nav__link">
-    Summary statistics of a subset of data
+  <a href="#summary-statistics-of-a-subset-of-data-csvgrep" class="md-nav__link">
+    Summary statistics of a subset of data - csvgrep
   </a>
   
 </li>
@@ -1951,7 +1987,7 @@
               
                 
                 
-                <h1 id="csvkit">CSVKIT</h1>
+                <h1 id="csvkit-a-brief-introduction">csvkit - a brief introduction</h1>
 <blockquote>
 <p>csvkit is a suite of command-line tools for converting to and working with CSV, the king of tabular file formats.</p>
 </blockquote>
@@ -1984,7 +2020,7 @@ csvcut -n iris.csv
 csvlook iris.csv | head -n 10
 
 </code></pre>
-<h3 id="peeking-at-a-subset-of-data-csvcut-c">Peeking at a subset of data - <code>csvcut -c</code></h3>
+<h3 id="peeking-at-a-select-columns-of-data-csvcut-c">Peeking at a select columns of data - <code>csvcut -c</code></h3>
 <pre><code class="language-bash">
 # isolating certain columns can be achieved using `awk`
 cat iris.csv | awk -F ',' '{ print $2,$5 }' | csvlook | head -n 10
@@ -1999,11 +2035,14 @@ cat iris.csv | csvcut -c 2,5 | csvlook | head -n 10
 csvstat iris.csv
 
 </code></pre>
-<h3 id="summary-statistics-of-a-subset-of-data">Summary statistics of a subset of data</h3>
+<h3 id="summary-statistics-of-a-subset-of-data-csvgrep">Summary statistics of a subset of data - <code>csvgrep</code></h3>
 <pre><code class="language-bash">
+# Show a summary of the rows in the data that have the string &quot;Iris-versicolor&quot; in them
+
+# ... using awk to filter the data
 cat iris.csv | awk -F &quot;,&quot; 'NR==1; /Iris-versicolor/ { print }' | csvstat
 
-
+# ... using csvgrep to filter the data
 cat iris.csv | csvgrep -c 5 -m Iris-versicolor| csvstat
 
 </code></pre>
