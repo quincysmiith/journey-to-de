@@ -1952,19 +1952,44 @@ FROM table_1
 </code></pre>
 <h2 id="replacing-strings">Replacing strings</h2>
 <h2 id="identifying-duplicate-rows">Identifying duplicate rows</h2>
-<p>```sql</p>
-<p>SELECT COUNT(<em>)
+<pre><code class="language-sql">
+SELECT COUNT(*)
 FROM
     (SELECT
         column_a,
         column_b,
         column_c,
-        COUNT(</em>) AS records
+        COUNT(*) AS records
     FROM table_1
     GROUP BY
         column_a,
         column_b,
-        column_c) </p>
+        column_c) a 
+WHERE records &gt; 1;
+
+</code></pre>
+<pre><code class="language-sql">
+-- rewritten as CTE
+
+WITH duplicate_count AS (
+    SELECT
+        column_a,
+        column_b,
+        column_c,
+        COUNT(*) AS records
+    FROM table_1
+    GROUP BY
+        column_a,
+        column_b,
+        column_c
+)
+
+-- count rows where duplicates have been found
+SELECT COUNT(*)
+FROM duplicate_count
+WHERE records &gt; 1;
+
+</code></pre>
                 
               
               
