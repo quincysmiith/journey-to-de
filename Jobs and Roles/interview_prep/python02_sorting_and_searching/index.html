@@ -1,0 +1,4206 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../flashcard_20240110/">
+      
+      
+        <link rel="next" href="../python03_recursion/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
+    
+    
+      
+        <title>Searching and sorting algorithms in python - Road to a data engineer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#searching-and-sorting-algorithms-in-python" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Road to a data engineer" class="md-header__button md-logo" aria-label="Road to a data engineer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Road to a data engineer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Searching and sorting algorithms in python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Road to a data engineer" class="md-nav__button md-logo" aria-label="Road to a data engineer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Road to a data engineer
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Current situation and learning path
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Data%20Engineer%20Landscape/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Engineering Landscape
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Databases
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Databases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Databases/Data%20Warehouse%20Toolkit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data warehouse toolkit notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Databases/Database_design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Database Design video course and notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Decision Journal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Decision Journal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Decision%20Journal/01%20GCP%20decision/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decision: Choice of cloud platform to learn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Decision%20Journal/dj%20template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decision Journal Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Google Cloud Platform
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Google Cloud Platform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/GCP%20code%20snippets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common GCP code snippets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Engineering Certificate
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Data Engineering Certificate
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/de_certificate_misc_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Engineering Certificate Misc Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/de_certificate_practice_exam_notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Engineering practice Exam notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_ai_platform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google AI Platform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_bigquery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BigQuery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_bigtable/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Cloud Bigtable
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_cloud_sql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cloud SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_dataflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Dataflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_datalab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Datalab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_dataproc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Dataproc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_datastore_and_firestore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Datastore and Firestore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_memorystore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Memorystore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_pubsub/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Pub/Sub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_spanner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Cloud Spanner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/Data%20Engineering%20Certificate/google_tensorflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google Tensorflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Qwiklabs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Qwiklabs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/qwiklabs/01_Quest%20badges/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Badges earned on Qwiklabs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/qwiklabs/Baseline%20Data%20ML%20AI%20quest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Baseline Data ML AI Quest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/qwiklabs/Baseline%20Infrasctructure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Baseline Infrastructure Quest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/qwiklabs/BigQuery%20for%20Data%20Analysts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BigQuery for data analysts quest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/qwiklabs/BigQuery%20for%20Marketing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BigQuery for Marketing Analysts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/qwiklabs/BigQuery%20for%20data%20analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BigQuery for Data Analysis Quest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/qwiklabs/BigQuery%20for%20data%20warehousing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BigQuery for Data Warehousing Quest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/qwiklabs/Data_engineering_quest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Engineering Quest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Google%20Cloud%20Platform/qwiklabs/Machine%20learning%20APIs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrate Machine Learning APIs Quest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Jobs and Roles
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Jobs and Roles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_engineer_role_sumathi_team/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conversation with chapter lead data engineer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../junior_data_engineer_at_woolies01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Junior data engineer at woolies01
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Interview prep
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Interview prep
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Engineering Interview Prep
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../_flashcard_template/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flashcard template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bigO/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BigO Notation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bubble_sort/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bubble sort
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashcard_20231215/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flashcard 20231215
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashcard_20231216/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flashcard 20231216
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flashcard_20240110/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Flashcard template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Searching and sorting algorithms in python
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Searching and sorting algorithms in python
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sorting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      merge sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bubble-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      bubble sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertion-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      insertion sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      selection sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heap-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heap sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radix-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radix sort
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#searching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Searching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Searching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linear-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      binary search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="binary search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-problem-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search - problem 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-problem-2-first-bad-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search - problem 2 :: First Bad Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-problem-3-square-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search - problem 3 :: Square root
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-problem-4-search-insert-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search - problem 4 :: Search Insert Position
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-problem-5-peak-element" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search - problem 5 :: Peak Element
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jump-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jump Search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpolation Search
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python03_recursion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recursion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python04_hashtables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hashtables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python05_blooms/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bloom filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python06_graphs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graphing Algorithms
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_codewars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python Codewars problems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python_leetcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Leetcode problems solved with Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Linux
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Analytics at the terminal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Data Analytics at the terminal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1_1" id="__nav_7_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Crash Course
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Crash Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/00_introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction and Motivation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/01_fundamental_bash_commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fundamental Bash Commands
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/02_expanding_the_fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Expanding the fundamentals for Data Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/03_downloading_files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Downloading files with Bash
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/04_working_with_text_files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Working with and manipulating text files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/05_common_text_file_cleaning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BONUS - Common text file cleaning operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/06_toolkit_setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup data tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/07_csvkit_a_brief_detour/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    csvkit - a brief introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/08_getting_data_into_sqlite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08 getting data into sqlite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/09_interacting_with_sqlite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interacting with SQLite databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/11_common_cleaning_tasks_in_sql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common data cleaning and transforming tasks in SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/12_replicating_common_spreadsheet_tasks_in_sql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Replicating common spreadsheet tasks in SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/13_building_a_bash_script/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Building a pipeline as a bash script
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Crash%20Course/50_addditional_resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Additional resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1_2" id="__nav_7_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Deepnote Notebooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Deepnote Notebooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Deepnote%20Notebooks/00_intro_to_data_analytics_at_terminal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Environment setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Deepnote%20Notebooks/01_poking_around/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Exploring terminal functionality for interacting with data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Deepnote%20Notebooks/02_grep_in_depth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GREP basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Deepnote%20Notebooks/05_becoming%20familiar%20with%20the%20data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting a feel for the data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Deepnote%20Notebooks/06_saving_data_to_sqlite/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Saving data to SQLite at the terminal
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/Data%20Analytics%20at%20the%20terminal/Deepnote%20Notebooks/utilities%20available/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CSV and SQLite tools overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Bitcoin Price Dashboard
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Bitcoin Price Dashboard
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Projects/Bitcoin%20Price%20Dashboard/01%20-%20summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bitcoin Dashboard Project Details
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Projects/Bitcoin%20Price%20Dashboard/02%20-%20Cloud%20Function%20Code/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bitcoin dashboard Cloud Function code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Projects/Bitcoin%20Price%20Dashboard/03%20-%20Google%20Cloud%20Scheduler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scheduling and Monitoring
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Projects/Bitcoin%20Price%20Dashboard/04%20-%20Raw%20data%20transformation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bitcoin Data Transformation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Projects/Bitcoin%20Price%20Dashboard/05%20-%20Project%20Visualisation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bitcoin project visualisation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    fivethirtyeight data to BigQuery
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            fivethirtyeight data to BigQuery
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Projects/fivethirtyeight%20data%20to%20BigQuery/01%20-%20summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project details
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Projects/fivethirtyeight%20data%20to%20BigQuery/02%20-%20airflow%20setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Airflow server setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Projects/fivethirtyeight%20data%20to%20BigQuery/02b%20-%20DAG%20screenshots/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Airflow screenshots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Projects/fivethirtyeight%20data%20to%20BigQuery/03%20-%20The%20DAG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    fivethirtyeight DAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Projects/fivethirtyeight%20data%20to%20BigQuery/04%20-%20Project%20Visualisations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project visualisations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Apache%20Airflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Apache Airflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Engineering with python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            Data Engineering with python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Data%20Engineering%20with%20python/Chapter%201/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 1: What is data engineering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Data%20Engineering%20with%20python/Chapter%202%20-%20Notebook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2 - Notebook
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Data%20Engineering%20with%20python/Chapter%202/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 2: Building Our Data Engineering Infrastructure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Data%20Engineering%20with%20python/Chapter%203%20-%20Notebook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3   Notebook
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Data%20Engineering%20with%20python/Chapter%203/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 3: Reading and writing files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Data%20Engineering%20with%20python/Chapter%204%20-%20Notebook2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4 - Notebook
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Data%20Engineering%20with%20python/Chapter%204/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Chapter 4: Working with Databases
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Data%20Engineering%20with%20python/misc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Misc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Google Colab
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            Google Colab
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Google%20Colab/Converting_video_types_on_Google_Colab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Converting between video types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Google%20Colab/Domo_Card_backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backup of Domo Cards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3_3" id="__nav_9_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Intro to Google Colab Notebooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_9_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Intro to Google Colab Notebooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Google%20Colab/Intro%20to%20Google%20Colab%20Notebooks/00_intro_to_colab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is Google Colab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Google%20Colab/Intro%20to%20Google%20Colab%20Notebooks/01_using_google_drive_as_a_filesystem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Google Drive as a filesystem in Google Colab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Google%20Colab/Intro%20to%20Google%20Colab%20Notebooks/02_reading_and_saving_to_google_sheets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reading from and saving to Google Sheets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Google%20Colab/Intro%20to%20Google%20Colab%20Notebooks/03_pulling_data_from_Adobe_analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accessing Adobe Analytics data through the API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Google%20Colab/Intro%20to%20Google%20Colab%20Notebooks/04_querying_BigQuery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query BigQuery from within Google Colab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_4" id="__nav_9_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pycon US 2021
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_4">
+            <span class="md-nav__icon md-icon"></span>
+            Pycon US 2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Pycon%20US%202021/01%20keynote/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keynote: Robert Erdmann
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Pycon%20US%202021/02%20creating%20extensible%20workflows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating extensible workflows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Pycon%20US%202021/03%20using%20papermill/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What we learned from Papermill to operationalize notebooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Pycon%20US%202021/04%20documentation%20for%20developers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Writing Good Documentation for Developers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Pycon%20US%202021/07%20Google%20Serverless%20Application%20Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Google: Serverless Application Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/Pycon%20US%202021/08%20Build%20slack%20apps%20fast%20in%20python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build Slack apps fast in Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/code_snippets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code snippets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/data_engineering_through_osmosis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Engineering through osmosis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/project_ideas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Project ideas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Resources/videos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Videos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sorting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sorting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merge-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      merge sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bubble-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      bubble sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertion-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      insertion sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      selection sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heap-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heap sort
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#radix-sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radix sort
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#searching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Searching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Searching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linear-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linear search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      binary search
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="binary search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-problem-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search - problem 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-problem-2-first-bad-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search - problem 2 :: First Bad Version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-problem-3-square-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search - problem 3 :: Square root
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-problem-4-search-insert-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search - problem 4 :: Search Insert Position
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-search-problem-5-peak-element" class="md-nav__link">
+    <span class="md-ellipsis">
+      Binary Search - problem 5 :: Peak Element
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jump-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jump Search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interpolation Search
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="searching-and-sorting-algorithms-in-python">Searching and sorting algorithms in python</h1>
+<p>Interviewers may ask candidates to implement sorting algorithms like quicksort, mergesort, or heapsort, or search algorithms like binary search.</p>
+<h2 id="sorting">Sorting</h2>
+<ul>
+<li>quick sort</li>
+<li>merge sort</li>
+<li>bubble sort</li>
+<li>insertion sort</li>
+<li>selection sort</li>
+<li>heap sort</li>
+</ul>
+<h3 id="quick-sort">Quick sort</h3>
+<p>Quick sort is a recursive algorithm.</p>
+<ol>
+<li>Choose a pivot</li>
+<li><strong>Partition</strong> - all values in array smaller than pivot go on the left. All values in array larger than pivot go on the right.</li>
+<li>apply the previous two steps to the smaller created lists/arrays.</li>
+<li>The Base case of the recusion is when the sub array has 1 or 0 elements</li>
+</ol>
+<p>Quicksort has a (worst) time complexity of O(n^2).</p>
+<p>Quicksort has an average time complexity of O(n log (n))</p>
+<iframe width="700" height="400" src="https://www.youtube.com/embed/Hoixgm4-P4M" title="Quick sort in 4 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>a simple implementation of quicksort in Python:</p>
+<pre><code class="language-python">
+def quicksort(arr):
+    if len(arr) &lt;= 1:
+        return arr
+
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x &lt; pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x &gt; pivot]
+
+    return quicksort(left) + middle + quicksort(right)
+
+# Example usage:
+my_array = [3, 6, 8, 10, 1, 2, 1]
+sorted_array = quicksort(my_array)
+print(sorted_array)
+
+
+</code></pre>
+<h3 id="merge-sort">merge sort</h3>
+<p>Merge sort is a divide and conquer algorithm for sorting arrays.</p>
+<p>Merge sort is an efficient, general-purpose, and comparison-based sorting algorithm.</p>
+<p>Merge sort is a recursive algorithm that continually splits a list in half. The list is then sorted by recursively calling the same algorithm on each half until the list is sorted.</p>
+<p>The merge sort algorithm is a comparison based algorithm in which two arrays are merged together to produce a new sorted array.</p>
+<p>The merge sort algorithm is a divide and conquer algorithm. It divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves.</p>
+<iframe width="700" height="400" src="https://www.youtube.com/embed/4VqmGXwpLqc" title="Merge sort in 3 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>In the merge step of the merge algorithm</p>
+<ol>
+<li>Compare the first element of both arrays.</li>
+<li>If the first element of the first array is greater than the first element of the second array, then copy the first element of the first array to the new array.</li>
+<li>Otherwise, copy the first element of the second array to the new array.</li>
+<li>Repeat steps 1-3 until you compare the last element of the first array with the last element of the second array.</li>
+<li>Copy the last element of the second array, if it is larger than the last element of the first array.</li>
+<li>Repeat steps 1-5 until you merge all elements from both arrays.</li>
+</ol>
+<h3 id="bubble-sort">bubble sort</h3>
+<p>The bubble sort algorithm involves repeatedly swapping the adjacent elements if they are in wrong order.</p>
+<p>It is called "bubble" sort because when sorting the biggest (or smallest) number makes its way to the end of the list, it "bubbles" up to the end.</p>
+<iframe width="700" height="400" src="https://www.youtube.com/embed/xli_FI7CuzA" title="Bubble sort in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>The time complexity of the bubble sort algorithm is O(n^2), where "n" is the number of elements in the array. This is because the algorithm has two nested loops. In the worst-case scenario, it needs to compare and swap elements for each pair in the array, leading to a quadratic time complexity.</p>
+<p>The outer loop runs for 'n' iterations, and for each iteration of the outer loop, the inner loop runs for 'n' iterations in the worst case. This results in a total of n * n = n^2 comparisons and swaps.</p>
+<p>While bubble sort is simple to understand and implement, its efficiency decreases rapidly with larger datasets, making it less practical for sorting large arrays compared to more efficient algorithms like quicksort or mergesort, which have better average and worst-case time complexities.</p>
+<p>Imagine you have a bag of toy blocks, and you want to organize them from the smallest to the biggest. Bubble sort is like comparing and swapping blocks until they are all in order.</p>
+<p>Now, if you have lots of blocks, say 10 blocks, you might have to compare each block with every other block. This means you'll have to do 10 times 10 comparisons (10 * 10 = 100) in total.</p>
+<p>So, the "Big O notation" for bubble sort is like saying, "If you have 'n' blocks, it might take 'n' times 'n' (n^2) comparisons." It's a way of talking about how many comparisons and swaps you might need to do based on how many blocks you have.</p>
+<p>In simple terms, for bubble sort, the Big O notation is O(n^2), where 'n' is the number of blocks. It means the more blocks you have, the more work you might need to do to organize them using bubble sort.</p>
+<pre><code class="language-python">
+######
+## My implementation
+######
+
+def my_bubble_sort(a_list):
+    &quot;&quot;&quot;
+    Implementation of the bubble sort algorithm
+    &quot;&quot;&quot;
+
+    list_changed = 1
+
+    while list_changed != 0:
+        list_changed = 0
+
+        for i in range(len(a_list) - 1):
+            if a_list[i] &gt; a_list[i + 1]:
+                # swap if left is bigger than right
+                a_list[i + 1], a_list[i] = a_list[i], a_list[i + 1]
+                list_changed += 1
+        #print(a_list)
+
+
+    return a_list
+
+
+######
+## typical implementation
+######
+
+def bubble_sort(a_list):
+    &quot;&quot;&quot;
+    Implementation of the bubble sort algorithm
+    &quot;&quot;&quot;
+
+    n = len(a_list)
+
+    # Traverse through all array elements
+    for i in range(n):
+
+        # Last i elements are already in place, so we don't need to check them
+        for j in range(0, n-i-1):
+
+            # Swap if the element found is greater than the next element
+            if a_list[j] &gt; a_list[j+1]:
+                a_list[j], a_list[j+1] = a_list[j+1], a_list[j]
+
+    return a_list
+
+</code></pre>
+<h3 id="insertion-sort">insertion sort</h3>
+<p>Insertion sort is a simple sorting algorithm.</p>
+<p>The insertion sort algorithm starts by comparing the first two elements of the array. If the first element is greater than the second element, the first element takes its place in the sorted array. If the first element is less than the second element, the second element takes its place in the sorted array.</p>
+<p>The insertion sort algorithm kind of maintains a subset of "sorted" values which
+increases by 1 with each iteration until the entire array is sorted.</p>
+<p>An outline of the insertion sort algorithm is as follows</p>
+<ol>
+<li>Start with the second element of the array (index 1), assuming the first element is already sorted.</li>
+<li>Compare the current element with the previous elements in the sorted part of the array.</li>
+<li>Move the current element to its correct position by shifting the larger elements to the right.</li>
+<li>Repeat steps 2-3 until the entire array is sorted.</li>
+</ol>
+<iframe width="700" height="400" src="https://www.youtube.com/embed/JU767SDMDvA" title="Insetion sort in 2 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<pre><code class="language-python">## My implementation of insertion sort algorithm
+def my_insertion_sort(arr:list):
+    &quot;&quot;&quot;
+    my implementation of the insertion sort algorithm
+    &quot;&quot;&quot;
+
+    if len(arr) &gt; 2:
+        for i in range(1, len(arr)):
+            print(arr)
+            offset = 1
+            while i - offset &gt;= 0:
+                print(arr[i], arr[i - offset])
+                if arr[i] &lt; arr[i - offset]:
+                    arr[i], arr[i - offset] =  arr[i - offset], arr[i]
+                    offset += 1
+                else:
+                    break
+
+    return arr
+</code></pre>
+<pre><code class="language-python">## Chat GPT implementation of insertion sort algorithm
+
+def insertion_sort(arr):
+    # Traverse through 1 to len(arr)
+    for i in range(1, len(arr)):
+        key = arr[i]
+
+        # Move elements of arr[0..i-1] that are greater than key
+        # to one position ahead of their current position
+        j = i - 1
+        while j &gt;= 0 and key &lt; arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+
+        # Place the key at its correct position
+        arr[j + 1] = key
+
+    return arr
+</code></pre>
+<h3 id="selection-sort">selection sort</h3>
+<p>Selection sort is a sorting algorithm.</p>
+<p>At the start the entire array is considered unsorted.</p>
+<p>It works by moving the smallest element in the unsorted portion of
+the array to the first position in the unsorted portion of the array.</p>
+<p>The element that was just moved to the first position in the unsored portion is considered
+sorted.</p>
+<p>The smallest element in the unsorted portion of the array is determined
+by 
+- starting with the first element, keep track of its index.
+- this element is then compared with other elements in the array (iterating through)
+- if a smaller number is found, we now keep track of this new index as the smallest.</p>
+<iframe width="700" height="480" src="https://www.youtube.com/embed/g-PGLbMth_g" title="Selection sort in 3 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<pre><code class="language-python">
+def my_selection_sort(a_list):
+    &quot;&quot;&quot;
+    Implementation of the selection sort algorithm
+    &quot;&quot;&quot;
+
+    for i in range(len(a_list)):
+        # find minimum value in &quot;unsorted&quot; part of list
+        smallest = min(a_list[i:])
+        # find the index of the minimum element in list
+        to_swap = a_list.index(smallest)
+        # swap minimum with first element in &quot;unsorted&quot; part of list
+        a_list[i], a_list[to_swap] = a_list[to_swap], a_list[i]
+
+    return a_list
+
+
+###########################
+# Chat GPT implementation of selection sort in python
+###########################
+
+def selection_sort(arr):
+    n = len(arr)
+
+    for i in range(n - 1):
+        # Find the minimum element in the unsorted part
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] &lt; arr[min_index]:
+                min_index = j
+
+        # Swap the found minimum element with the first element
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+
+    return arr
+
+</code></pre>
+<h3 id="heap-sort">Heap sort</h3>
+<h3 id="radix-sort">Radix sort</h3>
+<h2 id="searching">Searching</h2>
+<ul>
+<li>linear search</li>
+<li>binary search</li>
+<li>jump search</li>
+<li>interpolation search</li>
+</ul>
+<h3 id="linear-search">Linear search</h3>
+<p>Iterate through each item in the array / list until you find what you are looking for.</p>
+<p>Iteratively check each item in list until target is found. (This is sometimes known 
+as brute force search)</p>
+<p>This approach has an O(n) (linear) time complexity. As the length of time increases
+as each data point is included that needs to be processed.</p>
+<p>Linear search is slow for large datasets.</p>
+<p>Data does not need to be sorted for linear search to apply</p>
+<h3 id="binary-search">binary search</h3>
+<p>Continuously divide the list in half until the value is found or the list becomes empty.</p>
+<iframe width="700" height="400" src="https://www.youtube.com/embed/fDKIpRe8GW4" title="Binary search in 4 minutes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>The time complexity of the binary search algorithm is O(log n), where "n" is the number of elements in the array. This is because the algorithm divides the list in half at each iteration, leading to a logarithmic time complexity.</p>
+<p>The binary search algorithm is efficient when the list is already sorted.</p>
+<h4 id="binary-search-problem-1">Binary Search - problem 1</h4>
+<p>Also on leetcode <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/">here</a></p>
+<p>Given a rotated sorted array of unique elements, write a function to search for a specific target element.</p>
+<pre><code class="language-python">
+def search_rotated_array(nums, target):
+    # Implement binary search logic here
+    pass
+
+# Example usage:
+rotated_array = [4, 5, 6, 7, 0, 1, 2]
+target_number = 0
+result = search_rotated_array(rotated_array, target_number)
+print(f&quot;The target number {target_number} is at index {result}.&quot;)
+
+
+</code></pre>
+<h4 id="binary-search-problem-2-first-bad-version">Binary Search - problem 2 :: First Bad Version</h4>
+<p>You are given a list of versions, and you need to find the first one that is bad. Implement a function to find the first bad version using binary search.</p>
+<pre><code class="language-python">
+def first_bad_version(n):
+    # Implement binary search logic here
+    pass
+
+# Example usage:
+total_versions = 10
+first_bad = 4
+result = first_bad_version(total_versions)
+print(f&quot;The first bad version is at index {result}.&quot;)
+
+
+</code></pre>
+<h4 id="binary-search-problem-3-square-root">Binary Search - problem 3 :: Square root</h4>
+<p>Write a function to compute the square root of a non-negative integer using binary search.</p>
+<pre><code class="language-python">
+def sqrt_binary_search(x):
+    # Implement binary search logic here
+    pass
+
+# Example usage:
+number_to_find_sqrt = 16
+result_sqrt = sqrt_binary_search(number_to_find_sqrt)
+print(f&quot;The square root of {number_to_find_sqrt} is approximately {result_sqrt}.&quot;)
+
+</code></pre>
+<pre><code class="language-python">
+### MY SOLUTION
+
+def sqrt_binary_search(x):
+    # Implement binary search logic here
+
+    # create initial upper and lower bounds
+    lower_bound = 0
+    upper_bound = x
+
+    for i in range(1000):
+        # make a guess in the midpoint of the range
+        guess = (lower_bound + upper_bound ) / 2
+        guess_result = guess ** 2
+
+        # the guess is actually the square root
+        if guess_result == x:
+            return guess
+        # the guess produces a result lower than the objective
+        elif guess_result &lt; x:
+            # set the lower bound to the guess, since we know the number we need must be higher
+            lower_bound = guess
+        # the guess produces a result higher than the objective
+        elif guess_result &gt; x:
+            # set the higher bound to the guess since we know the number we need must be lower
+            upper_bound = guess
+
+    # return the best guess after 1000 iterations of the binary search
+    return guess
+
+
+### Suggested Solution
+
+def sqrt_binary_search_gpt(x):
+    &quot;&quot;&quot;
+    ChatGPT inspired square root binary search function
+    &quot;&quot;&quot;
+    if x &lt; 0:
+        raise ValueError(&quot;Cannot compute the square root of a negative number.&quot;)
+    if x == 0 or x == 1:
+        return x
+
+    low, high = 0, x
+    result = 0
+
+    while low &lt;= high:
+        mid = (low + high) // 2
+        mid_squared = mid * mid
+
+        if mid_squared == x:
+            return mid  # Perfect square found
+        elif mid_squared &lt; x:
+            low = mid + 1
+            result = mid  # Update result for the potential answer
+        else:
+            high = mid - 1
+
+    return result
+
+</code></pre>
+<h4 id="binary-search-problem-4-search-insert-position">Binary Search - problem 4 :: Search Insert Position</h4>
+<p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
+<pre><code class="language-python">
+def search_insert(nums, target):
+    # Implement binary search logic here
+    pass
+
+# Example usage:
+sorted_array = [1, 3, 5, 6]
+target_number = 5
+result = search_insert(sorted_array, target_number)
+print(f&quot;The target number {target_number} should be inserted at index {result}.&quot;)
+
+
+</code></pre>
+<h4 id="binary-search-problem-5-peak-element">Binary Search - problem 5 :: Peak Element</h4>
+<p>Given an array of integers, find a peak element. A peak element is an element that is greater than or equal to its neighbors.</p>
+<pre><code class="language-python">
+def find_peak_element(nums):
+    # Implement binary search logic here
+    pass
+
+# Example usage:
+array_with_peak = [1, 2, 3, 1]
+result_peak = find_peak_element(array_with_peak)
+print(f&quot;A peak element is at index {result_peak}.&quot;)
+
+
+</code></pre>
+<h3 id="jump-search">Jump Search</h3>
+<p>Jump search relies on a sorted array.</p>
+<p>Jump search is a modification of linear search.</p>
+<p>In Jump search you start at the beginning, then we <strong>jump</strong> ahead in the array a certain number of positions until we find a value that is greater than the target. Then we look at every item in the previous array block.</p>
+<p><em>From ChatGPT</em></p>
+<blockquote>
+<p>It is a block-based search algorithm that jumps ahead by fixed steps and then performs a linear search in the block where the target element is likely to be found. The key idea is to reduce the number of elements to be searched linearly by jumping over a fixed number of elements in each iteration.</p>
+</blockquote>
+<p>Jump search has a time complexity of O(sqrt(n)).</p>
+<p>The jump size is normally the square root of the length of the array or list.</p>
+<iframe width="700" height="400" src="https://www.youtube.com/embed/63kS6ZkMpkA" title="Jump Search | GeeksforGeeks" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<p>Here's a step-by-step explanation of how the jump search algorithm works:</p>
+<ol>
+<li>Given a sorted array: Start with a sorted array of elements.</li>
+<li><strong>Define block size</strong>: Decide on a block size (often denoted as step or jump). The block size determines how many elements to jump ahead in each iteration.</li>
+<li><strong>Jump ahead</strong>: Start at the beginning of the array and jump ahead by the block size until you find a value greater than or equal to the target element.</li>
+<li><strong>Linear search in the block</strong>: Perform a linear search within the block from the previous step. This can be done by iterating through the elements within the block until the target element is found or a value greater than the target element is encountered.</li>
+<li><strong>Repeat or stop</strong>: If the target element is found, return its index. If the end of the array is reached and the target element is not found, then the element is not present in the array.</li>
+</ol>
+<p>https://colab.research.google.com/drive/10NcVv-iVN_J0N34_OD5DWn6EnU_cyWzi</p>
+<pre><code class="language-python">
+### MY VERSION
+
+from icecream import ic
+import math
+
+def marquins_jump_search(a_list, target):
+    &quot;&quot;&quot;
+    a jump search algorithm in python.
+
+    returns the index of the target in the array
+    returns -1 if the target is not in the array
+    &quot;&quot;&quot;
+
+    # a_list is my array
+    n = len(a_list)
+    jump_size = math.floor(math.sqrt(n)) # ensure is a whole number.
+
+    for i in range(jump_size + 1):
+        # if the length of the array does not have a whole number square root
+        # i * jump size may result in a value larger than the length 
+        # of the given array / list
+        my_key = i * jump_size
+        if my_key &gt; n:
+            my_key = n - 1
+
+        #ic(my_key)
+        #ic(a_list[my_key])
+        if a_list[my_key] &gt; target:
+            min_key = (i - 1) * jump_size
+            #ic(min_key)
+            for j in range(min_key, my_key):
+                #ic(j)
+                #ic(a_list[j])
+                if a_list[j] == target:
+                    return j
+            return -1
+    return -1
+
+
+### ALTERNATIVE
+
+def jump_search(arr, target):
+    n = len(arr)
+    step = int(math.sqrt(n))  # Calculate the jump size
+
+    # Find the block where the target might be
+    prev, curr = 0, step
+    while curr &lt; n and arr[curr] &lt; target:
+        prev = curr
+        curr += step
+
+    # Perform linear search within the block
+    for i in range(prev, min(curr, n)):
+        if arr[i] == target:
+            return i  # Element found, return its index
+
+    return -1  # Element not found in the array
+
+</code></pre>
+<h3 id="interpolation-search">Interpolation Search</h3>
+<p>Interpolation search is an modified (improved) version of binary search.</p>
+<p>Interpolation search requires a sorted list / array as input. The sorted list / array
+must also be roughly uniformly distributed.</p>
+<p>Interpolation search uses a formula to estimate the position of the item being searched for.
+(this is instead of always dividing the array by 2)</p>
+<iframe width="700" height="400" src="https://www.youtube.com/embed/YSVS5GG1JuI" title="Learn Interpolation search in 8 minutes ❓" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.7389ff0e.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../../javascripts/config.js"></script>
+      
+    
+  </body>
+</html>
